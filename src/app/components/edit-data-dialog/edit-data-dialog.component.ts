@@ -67,6 +67,7 @@ export class EditDataDialogComponent implements OnInit {
 
   editDataArray: EditDataInfo[] = [];
   editDataClientArray: EditDataInfo[] = [];
+  parsedOject: EditDataInfo[] = [];
 
   @Input() data: any;
   @Input() clientData: any;
@@ -77,7 +78,8 @@ export class EditDataDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data != undefined) {
-      let parsedObject = JSON.parse(this.data);
+      this.parsedOject = JSON.parse(this.data);
+
     }
   }
 

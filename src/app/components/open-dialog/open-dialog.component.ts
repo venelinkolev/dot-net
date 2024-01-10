@@ -12,6 +12,9 @@ export class OpenDialogComponent {
   constructor(public dialog: MatDialog) { }
 
   openDialog() {
-    this.dialog.open(EditDataDialogComponent);
+    this.dialog.open(EditDataDialogComponent, {
+      width: '50vw',
+      // height: '80vh',
+    });
   }
 }

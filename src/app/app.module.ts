@@ -5,18 +5,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+// import {  } from '@angular/material/';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { EditDataDialogComponent } from './components/edit-data-dialog/edit-data-dialog.component';
 import { OpenDialogComponent } from './components/open-dialog/open-dialog.component';
+import { InputFieldComponent } from './components/input-field/input-field.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditDataDialogComponent,
-    OpenDialogComponent
+    OpenDialogComponent,
+    InputFieldComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +30,9 @@ import { OpenDialogComponent } from './components/open-dialog/open-dialog.compon
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
