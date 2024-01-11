@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 export class InputFieldComponent {
 
   @Input() fieldName!: string;
-
+  @Input() value!: number;
 }
