@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 // import {  } from '@angular/material/';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,13 +18,15 @@ import { AppComponent } from './app.component';
 import { EditDataDialogComponent } from './components/edit-data-dialog/edit-data-dialog.component';
 import { OpenDialogComponent } from './components/open-dialog/open-dialog.component';
 import { InputFieldComponent } from './components/input-field/input-field.component';
+import { DialogLoaderComponent } from './components/dialog-loader/dialog-loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditDataDialogComponent,
     OpenDialogComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    DialogLoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { InputFieldComponent } from './components/input-field/input-field.compon
     MatInputModule,
     MatCheckboxModule,
     FormsModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

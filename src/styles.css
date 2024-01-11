@@ -29,3 +29,11 @@ body {
 body {
     font: inherit;
 }
+
+.dialogPanel {
+    width: 60vw;
+
+    .mat-mdc-dialog-content {
+        max-height: 75vh;
+    }
+}
