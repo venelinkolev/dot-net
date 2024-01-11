@@ -12,7 +12,7 @@ export interface DialogLoaderOptions {
 @Component({
     selector: 'app-dialog-loader',
     templateUrl: './dialog-loader.component.html',
-    styleUrls: ['./dialog-loader.component.scss']
+    styleUrls: ['./dialog-loader.component.css']
 })
 export class DialogLoaderComponent implements OnInit {
     public extra: any;

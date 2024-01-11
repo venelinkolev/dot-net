@@ -49,26 +49,23 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 */
 
 export interface EditDataSettings {
-  labelSubscription: EditDataInfo;
-  taxNewContract: EditDataInfo;
-  priceStation: EditDataInfo;
-  transferServerSubscription: EditDataInfo;
-  hotelSubscription: EditDataInfo;
-  accountingSubscription: EditDataInfo;
-  webSystemOperator: EditDataInfo;
+  sellStation: EditDataInfo;
+  store: EditDataInfo;
+  transfer: EditDataInfo;
+  hotel: EditDataInfo;
   androidLite: EditDataInfo;
-  kitchenTerminalSubscription: EditDataInfo;
   androidPro: EditDataInfo;
+  label: EditDataInfo;
+  accountant: EditDataInfo;
+  kitchenMonitor: EditDataInfo;
   posTerminal: EditDataInfo;
-  eMenuLite: EditDataInfo;
-  eMenuPro: EditDataInfo;
-  zayavkaSubscription: EditDataInfo;
+  noSendTransfer: EditDataInfo;
 }
 
 export interface EditDataInfo {
-  name: string;
-  price: number;
-  stk_id: number;
+  caption: string | number;
+  field_name: string;
+  data_type: string;
 }
 
 export interface DialogData {
@@ -82,24 +79,45 @@ export interface DialogData {
 })
 export class EditDataDialogComponent implements OnInit {
   public settings: EditDataSettings = {
-    labelSubscription: { name: '', price: 15, stk_id: 5 },
-    taxNewContract: { name: '', price: 0, stk_id: -1 },
-    priceStation: { name: '', price: 40, stk_id: 2 },
-    transferServerSubscription: { name: '', price: 20, stk_id: 3 },
-    hotelSubscription: { name: '', price: 35, stk_id: 4 },
-    accountingSubscription: { name: '', price: 80, stk_id: 6 },
-    webSystemOperator: { name: '', price: 40, stk_id: 7 },
-    androidLite: { name: '', price: 0, stk_id: 8 },
-    kitchenTerminalSubscription: { name: '', price: 15, stk_id: 9 },
-    androidPro: { name: '', price: 40, stk_id: 10 },
-    posTerminal: { name: '', price: 3, stk_id: 11 },
-    eMenuLite: { name: '', price: 20, stk_id: 12 },
-    eMenuPro: { name: '', price: 40, stk_id: 13 },
-    zayavkaSubscription: { name: '', price: 20, stk_id: 14 }
+    sellStation: { caption: '', field_name: '', data_type: '' },
+    store: { caption: '', field_name: '', data_type: '' },
+    transfer: { caption: '', field_name: '', data_type: '' },
+    hotel: { caption: '', field_name: '', data_type: '' },
+    androidLite: { caption: '', field_name: '', data_type: '' },
+    androidPro: { caption: '', field_name: '', data_type: '' },
+    label: { caption: '', field_name: '', data_type: '' },
+    accountant: { caption: '', field_name: '', data_type: '' },
+    kitchenMonitor: { caption: '', field_name: '', data_type: '' },
+    posTerminal: { caption: '', field_name: '', data_type: '' },
+    noSendTransfer: { caption: '', field_name: '', data_type: '' },
   }
 
+  data = JSON.stringify([
+    { caption: 'Закупена станция', value: 0, DataType: '1', name: 'SELL_STATION', isCheckbox: 'true' },
+    { caption: 'Склад', value: 1, DataType: '1', name: 'ALLOW_STORE', isCheckbox: 'true' },
+    { caption: 'Цена за Склад', value: '42.00', DataType: '2', name: 'nr_price_pc', isCheckbox: 'false' },
+    { caption: 'Трансфер', value: 0, DataType: '1', name: 'NR_ALLOW_TRSERVER', isCheckbox: 'true' },
+    { caption: 'Цена за Трансфер', value: '20.00', DataType: '2', name: 'nr_price_transfer', isCheckbox: 'false' },
+    { caption: 'Хотел', value: 1, DataType: '1', name: 'NR_ALLOW_HOTEL', isCheckbox: 'true' },
+    { caption: 'Цена за Хотел', value: '35.00', DataType: '2', name: 'nr_price_hotel', isCheckbox: 'false' },
+    { caption: 'Янак Андроид ЛАЙТ', value: 0, DataType: '1', name: 'ALLOW_ANDROID_RESTORANT', isCheckbox: 'true' },
+    { caption: 'Цена за Янак Андроид ЛАЙТ', value: '18.00', DataType: '2', name: 'PRICE_ANDROID_RESTORANT', isCheckbox: 'false' },
+    { caption: 'Янак Андроид ПРО', value: 0, DataType: '1', name: 'ALLOW_ANDROID_RAZNOS', isCheckbox: 'true' },
+    { caption: 'Цена за Янак Андроид ПРО', value: '40.00', DataType: '2', name: 'PRICE_ANDROID_RAZNOS', isCheckbox: 'false' },
+    { caption: 'Етикет', value: 1, DataType: '1', name: 'NR_ALLOW_ETIKET', isCheckbox: 'true' },
+    { caption: 'Цена за Етикет', value: '15.00', DataType: '2', name: 'nr_price_etiket', isCheckbox: 'false' },
+    { caption: 'Счетоводство', value: 0, DataType: '1', name: 'NR_ALLOW_ACCOUNTANT', isCheckbox: 'true' },
+    { caption: 'Цена за счетоводство', value: '80.00', DataType: '2', name: 'nr_price_account', isCheckbox: 'false' },
+    { caption: 'Кухненски терминал', value: 0, DataType: '1', name: 'ALLOW_MONITOR', isCheckbox: 'true' },
+    { caption: 'Цена за Кухненски терминал', value: '18.00', DataType: '2', name: 'PRICE_MONITOR', isCheckbox: 'false' },
+    { caption: 'Пос терминал', value: 0, DataType: '1', name: 'ALLOW_POSTERMINAL', isCheckbox: 'true' },
+    { caption: 'Цена за Пос терминал', value: '3.00', DataType: '2', name: 'PRICE_POSTERMINAL', isCheckbox: 'false' },
+    { caption: 'Забранява изпращане на данни по трансфера', value: 0, DataType: '1', name: 'ALLOW_FORBIDDEN_SEND_TRANSFER', isCheckbox: 'true' },
+  ]);
+
+
+
   editDataArray: EditDataInfo[] = [];
-  parsedOject: EditDataInfo[] = [];
 
   @Input() items: any;
   @Output() buttonClicked = new EventEmitter<EditDataInfo[]>();
@@ -110,9 +128,14 @@ export class EditDataDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.items != undefined) {
-      this.parsedOject = JSON.parse(this.items);
 
+    if (this.items == undefined) {
+      this.items = this.data;
+    }
+
+    if (this.items != undefined) {
+      let parsedOject = JSON.parse(this.items);
+      console.log(parsedOject);
     }
   }
 
