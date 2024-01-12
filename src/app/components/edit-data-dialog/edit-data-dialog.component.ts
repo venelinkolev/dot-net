@@ -183,12 +183,12 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.store = {
               ...this.settings.store,
               isCheck: objectSetting.value,
-              name: objectSetting.caption,
             }
             break;
           case 'nr_price_pc':
             this.settings.store = {
               ...this.settings.store,
+              name: objectSetting.caption,
               caption: objectSetting.value,
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
@@ -198,12 +198,12 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.transfer = {
               ...this.settings.transfer,
               isCheck: objectSetting.value,
-              name: objectSetting.caption,
             }
             break;
           case 'nr_price_transfer':
             this.settings.transfer = {
               ...this.settings.transfer,
+              name: objectSetting.caption,
               caption: objectSetting.value,
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
@@ -213,12 +213,12 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.hotel = {
               ...this.settings.hotel,
               isCheck: objectSetting.value,
-              name: objectSetting.caption,
             }
             break;
           case 'nr_price_hotel':
             this.settings.hotel = {
               ...this.settings.hotel,
+              name: objectSetting.caption,
               caption: objectSetting.value,
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
@@ -228,12 +228,12 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.androidLite = {
               ...this.settings.androidLite,
               isCheck: objectSetting.value,
-              name: objectSetting.caption,
             }
             break;
           case 'PRICE_ANDROID_RESTORANT':
             this.settings.androidLite = {
               ...this.settings.androidLite,
+              name: objectSetting.caption,
               caption: objectSetting.value,
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
@@ -243,12 +243,12 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.androidPro = {
               ...this.settings.androidPro,
               isCheck: objectSetting.value,
-              name: objectSetting.caption,
             }
             break;
           case 'PRICE_ANDROID_RAZNOS':
             this.settings.androidPro = {
               ...this.settings.androidPro,
+              name: objectSetting.caption,
               caption: objectSetting.value,
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
@@ -258,12 +258,12 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.label = {
               ...this.settings.label,
               isCheck: objectSetting.value,
-              name: objectSetting.caption,
             }
             break;
           case 'nr_price_etiket':
             this.settings.label = {
               ...this.settings.label,
+              name: objectSetting.caption,
               caption: objectSetting.value,
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
@@ -273,12 +273,12 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.accountant = {
               ...this.settings.accountant,
               isCheck: objectSetting.value,
-              name: objectSetting.caption,
             }
             break;
           case 'nr_price_account':
             this.settings.accountant = {
               ...this.settings.accountant,
+              name: objectSetting.caption,
               caption: objectSetting.value,
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
@@ -288,12 +288,12 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.kitchenMonitor = {
               ...this.settings.kitchenMonitor,
               isCheck: objectSetting.value,
-              name: objectSetting.caption,
             }
             break;
           case 'PRICE_MONITOR':
             this.settings.kitchenMonitor = {
               ...this.settings.kitchenMonitor,
+              name: objectSetting.caption,
               caption: objectSetting.value,
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
@@ -303,12 +303,12 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.posTerminal = {
               ...this.settings.posTerminal,
               isCheck: objectSetting.value,
-              name: objectSetting.caption,
             }
             break;
           case 'PRICE_POSTERMINAL':
             this.settings.posTerminal = {
               ...this.settings.posTerminal,
+              name: objectSetting.caption,
               caption: objectSetting.value,
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
