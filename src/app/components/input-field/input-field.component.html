@@ -1,8 +1,10 @@
 <div class="input-field-container">
-    <mat-checkbox [checked]="isCheck == 1" class="checkbox">
-        <p>{{fieldName}}</p>
+    <mat-checkbox [checked]="settingsInfo.isCheck == 1" class="checkbox"
+        (change)="setCheckbox($event, settingsInfo.field_name)">
+        <p>{{settingsInfo.name}}</p>
     </mat-checkbox>
     <mat-form-field appearance="outline">
-        <input autocomplete="off" type="number" matInput [(ngModel)]="value">
+        <input autocomplete="off" type="number" matInput [(ngModel)]="settingsInfo.caption"
+            (keyup)="setCurrentSettingValue(settingsInfo.field_name , settingsInfo.caption, settingsInfo.isCheck)">
     </mat-form-field>
 </div>

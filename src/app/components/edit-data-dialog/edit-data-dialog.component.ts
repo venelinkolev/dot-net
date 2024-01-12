@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
@@ -322,12 +323,21 @@ export class EditDataDialogComponent implements OnInit {
     console.log(this.editDataArray);
   }
 
-  setCurrentSettingsValue(name: string, value: string | number, isCheck: boolean): void {
+  setCurrentSettingValue(name: string, value: string | number, isCheck: string | number): void {
+    console.log('Set Value');
+    console.log('Name:', name);
+    console.log('Value:', value);
+    console.log('Is Check:', isCheck);
+  }
 
+  setCheckbox(e: MatCheckboxChange, name: string) {
+    console.log(e.checked);
+    console.log(name);
   }
 
   submittInfo(): void {
     this.buttonClicked.emit();
+    console.log(this.editDataArray);
   }
   closeDialog(): void {
     this.buttonClickedClose.emit(true);

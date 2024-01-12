@@ -13,26 +13,18 @@
         </div>
         <div class="dialog-content__main">
             <div class="dialog-content__left">
-                <app-input-field [fieldName]="settings.store.name" [value]="settings.store.caption"
-                    [isCheck]="settings.store.isCheck"></app-input-field>
-                <app-input-field [fieldName]="settings.transfer.name" [value]="settings.transfer.caption"
-                    [isCheck]="settings.transfer.isCheck"></app-input-field>
-                <app-input-field [fieldName]="settings.hotel.name" [value]="settings.hotel.caption"
-                    [isCheck]="settings.hotel.isCheck"></app-input-field>
-                <app-input-field [fieldName]="settings.label.name" [value]="settings.label.caption"
-                    [isCheck]="settings.label.isCheck"></app-input-field>
-                <app-input-field [fieldName]="settings.kitchenMonitor.name" [value]="settings.kitchenMonitor.caption"
-                    [isCheck]="settings.kitchenMonitor.isCheck"></app-input-field>
+                <app-input-field [settingsInfo]="settings.store" [setCurrentSettingValue]="setCurrentSettingValue"
+                    [setCheckbox]="setCheckbox"></app-input-field>
+                <app-input-field [settingsInfo]="settings.transfer"></app-input-field>
+                <app-input-field [settingsInfo]="settings.hotel"></app-input-field>
+                <app-input-field [settingsInfo]="settings.label"></app-input-field>
+                <app-input-field [settingsInfo]="settings.kitchenMonitor"></app-input-field>
             </div>
             <div class="dialog-content__right">
-                <app-input-field [fieldName]="settings.androidLite.name" [value]="settings.androidLite.caption"
-                    [isCheck]="settings.androidLite.isCheck"></app-input-field>
-                <app-input-field [fieldName]="settings.androidPro.name" [value]="settings.androidPro.caption"
-                    [isCheck]="settings.androidPro.isCheck"></app-input-field>
-                <app-input-field [fieldName]="settings.accountant.name" [value]="settings.accountant.caption"
-                    [isCheck]="settings.accountant.isCheck"></app-input-field>
-                <app-input-field [fieldName]="settings.posTerminal.name" [value]="settings.posTerminal.caption"
-                    [isCheck]="settings.posTerminal.isCheck"></app-input-field>
+                <app-input-field [settingsInfo]="settings.androidLite"></app-input-field>
+                <app-input-field [settingsInfo]="settings.androidPro"></app-input-field>
+                <app-input-field [settingsInfo]="settings.accountant"></app-input-field>
+                <app-input-field [settingsInfo]="settings.posTerminal"></app-input-field>
             </div>
         </div>
     </div>
