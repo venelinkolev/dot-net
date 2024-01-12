@@ -73,6 +73,7 @@ export interface EditDataInfoRender {
   field_name: string;
   data_type: string;
   isCheck: number | string;
+  name: string;
 }
 
 export interface DialogData {
@@ -117,17 +118,17 @@ const data = JSON.stringify([
 })
 export class EditDataDialogComponent implements OnInit {
   public settings: EditDataSettings = {
-    sellStation: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    store: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    transfer: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    hotel: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    androidLite: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    androidPro: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    label: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    accountant: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    kitchenMonitor: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    posTerminal: { caption: '', field_name: '', data_type: '', isCheck: 0 },
-    noSendTransfer: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    sellStation: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    store: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    transfer: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    hotel: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    androidLite: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    androidPro: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    label: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    accountant: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    kitchenMonitor: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    posTerminal: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    noSendTransfer: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
   }
 
   editDataArray: EditDataInfo[] = [];
@@ -166,6 +167,7 @@ export class EditDataDialogComponent implements OnInit {
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'ALLOW_FORBIDDEN_SEND_TRANSFER':
@@ -174,12 +176,14 @@ export class EditDataDialogComponent implements OnInit {
               field_name: objectSetting.name,
               data_type: objectSetting.DataType,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'ALLOW_STORE':
             this.settings.store = {
               ...this.settings.store,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'nr_price_pc':
@@ -194,6 +198,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.transfer = {
               ...this.settings.transfer,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'nr_price_transfer':
@@ -208,6 +213,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.hotel = {
               ...this.settings.hotel,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'nr_price_hotel':
@@ -222,6 +228,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.androidLite = {
               ...this.settings.androidLite,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'PRICE_ANDROID_RESTORANT':
@@ -236,6 +243,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.androidPro = {
               ...this.settings.androidPro,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'PRICE_ANDROID_RAZNOS':
@@ -250,6 +258,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.label = {
               ...this.settings.label,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'nr_price_etiket':
@@ -264,6 +273,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.accountant = {
               ...this.settings.accountant,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'nr_price_account':
@@ -278,6 +288,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.kitchenMonitor = {
               ...this.settings.kitchenMonitor,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'PRICE_MONITOR':
@@ -292,6 +303,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.posTerminal = {
               ...this.settings.posTerminal,
               isCheck: objectSetting.value,
+              name: objectSetting.caption,
             }
             break;
           case 'PRICE_POSTERMINAL':
