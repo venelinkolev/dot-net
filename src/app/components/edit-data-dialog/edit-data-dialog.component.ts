@@ -49,17 +49,17 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 */
 
 export interface EditDataSettings {
-  sellStation: EditDataInfo;
-  store: EditDataInfo;
-  transfer: EditDataInfo;
-  hotel: EditDataInfo;
-  androidLite: EditDataInfo;
-  androidPro: EditDataInfo;
-  label: EditDataInfo;
-  accountant: EditDataInfo;
-  kitchenMonitor: EditDataInfo;
-  posTerminal: EditDataInfo;
-  noSendTransfer: EditDataInfo;
+  sellStation: EditDataInfoRender;
+  store: EditDataInfoRender;
+  transfer: EditDataInfoRender;
+  hotel: EditDataInfoRender;
+  androidLite: EditDataInfoRender;
+  androidPro: EditDataInfoRender;
+  label: EditDataInfoRender;
+  accountant: EditDataInfoRender;
+  kitchenMonitor: EditDataInfoRender;
+  posTerminal: EditDataInfoRender;
+  noSendTransfer: EditDataInfoRender;
 }
 
 export interface EditDataInfo {
@@ -68,9 +68,47 @@ export interface EditDataInfo {
   data_type: string;
 }
 
+export interface EditDataInfoRender {
+  caption: string | number;
+  field_name: string;
+  data_type: string;
+  isCheck: number | string;
+}
+
 export interface DialogData {
   data: string;
 }
+
+export interface DataType {
+  caption: string;
+  value: string | number;
+  DataType: string;
+  name: string;
+  isCheckbox: string;
+}
+
+const data = JSON.stringify([
+  { caption: 'Закупена станция', value: 0, DataType: '1', name: 'SELL_STATION', isCheckbox: 'true' },
+  { caption: 'Склад', value: 1, DataType: '1', name: 'ALLOW_STORE', isCheckbox: 'true' },
+  { caption: 'Цена за Склад', value: '42.00', DataType: '2', name: 'nr_price_pc', isCheckbox: 'false' },
+  { caption: 'Трансфер', value: 0, DataType: '1', name: 'NR_ALLOW_TRSERVER', isCheckbox: 'true' },
+  { caption: 'Цена за Трансфер', value: '20.00', DataType: '2', name: 'nr_price_transfer', isCheckbox: 'false' },
+  { caption: 'Хотел', value: 1, DataType: '1', name: 'NR_ALLOW_HOTEL', isCheckbox: 'true' },
+  { caption: 'Цена за Хотел', value: '35.00', DataType: '2', name: 'nr_price_hotel', isCheckbox: 'false' },
+  { caption: 'Янак Андроид ЛАЙТ', value: 0, DataType: '1', name: 'ALLOW_ANDROID_RESTORANT', isCheckbox: 'true' },
+  { caption: 'Цена за Янак Андроид ЛАЙТ', value: '18.00', DataType: '2', name: 'PRICE_ANDROID_RESTORANT', isCheckbox: 'false' },
+  { caption: 'Янак Андроид ПРО', value: 0, DataType: '1', name: 'ALLOW_ANDROID_RAZNOS', isCheckbox: 'true' },
+  { caption: 'Цена за Янак Андроид ПРО', value: '40.00', DataType: '2', name: 'PRICE_ANDROID_RAZNOS', isCheckbox: 'false' },
+  { caption: 'Етикет', value: 1, DataType: '1', name: 'NR_ALLOW_ETIKET', isCheckbox: 'true' },
+  { caption: 'Цена за Етикет', value: '15.00', DataType: '2', name: 'nr_price_etiket', isCheckbox: 'false' },
+  { caption: 'Счетоводство', value: 0, DataType: '1', name: 'NR_ALLOW_ACCOUNTANT', isCheckbox: 'true' },
+  { caption: 'Цена за счетоводство', value: '80.00', DataType: '2', name: 'nr_price_account', isCheckbox: 'false' },
+  { caption: 'Кухненски терминал', value: 0, DataType: '1', name: 'ALLOW_MONITOR', isCheckbox: 'true' },
+  { caption: 'Цена за Кухненски терминал', value: '18.00', DataType: '2', name: 'PRICE_MONITOR', isCheckbox: 'false' },
+  { caption: 'Пос терминал', value: 0, DataType: '1', name: 'ALLOW_POSTERMINAL', isCheckbox: 'true' },
+  { caption: 'Цена за Пос терминал', value: '3.00', DataType: '2', name: 'PRICE_POSTERMINAL', isCheckbox: 'false' },
+  { caption: 'Забранява изпращане на данни по трансфера', value: 0, DataType: '1', name: 'ALLOW_FORBIDDEN_SEND_TRANSFER', isCheckbox: 'true' },
+]);
 
 @Component({
   selector: 'app-edit-data-dialog',
@@ -79,43 +117,18 @@ export interface DialogData {
 })
 export class EditDataDialogComponent implements OnInit {
   public settings: EditDataSettings = {
-    sellStation: { caption: '', field_name: '', data_type: '' },
-    store: { caption: '', field_name: '', data_type: '' },
-    transfer: { caption: '', field_name: '', data_type: '' },
-    hotel: { caption: '', field_name: '', data_type: '' },
-    androidLite: { caption: '', field_name: '', data_type: '' },
-    androidPro: { caption: '', field_name: '', data_type: '' },
-    label: { caption: '', field_name: '', data_type: '' },
-    accountant: { caption: '', field_name: '', data_type: '' },
-    kitchenMonitor: { caption: '', field_name: '', data_type: '' },
-    posTerminal: { caption: '', field_name: '', data_type: '' },
-    noSendTransfer: { caption: '', field_name: '', data_type: '' },
+    sellStation: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    store: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    transfer: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    hotel: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    androidLite: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    androidPro: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    label: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    accountant: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    kitchenMonitor: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    posTerminal: { caption: '', field_name: '', data_type: '', isCheck: 0 },
+    noSendTransfer: { caption: '', field_name: '', data_type: '', isCheck: 0 },
   }
-
-  data = JSON.stringify([
-    { caption: 'Закупена станция', value: 0, DataType: '1', name: 'SELL_STATION', isCheckbox: 'true' },
-    { caption: 'Склад', value: 1, DataType: '1', name: 'ALLOW_STORE', isCheckbox: 'true' },
-    { caption: 'Цена за Склад', value: '42.00', DataType: '2', name: 'nr_price_pc', isCheckbox: 'false' },
-    { caption: 'Трансфер', value: 0, DataType: '1', name: 'NR_ALLOW_TRSERVER', isCheckbox: 'true' },
-    { caption: 'Цена за Трансфер', value: '20.00', DataType: '2', name: 'nr_price_transfer', isCheckbox: 'false' },
-    { caption: 'Хотел', value: 1, DataType: '1', name: 'NR_ALLOW_HOTEL', isCheckbox: 'true' },
-    { caption: 'Цена за Хотел', value: '35.00', DataType: '2', name: 'nr_price_hotel', isCheckbox: 'false' },
-    { caption: 'Янак Андроид ЛАЙТ', value: 0, DataType: '1', name: 'ALLOW_ANDROID_RESTORANT', isCheckbox: 'true' },
-    { caption: 'Цена за Янак Андроид ЛАЙТ', value: '18.00', DataType: '2', name: 'PRICE_ANDROID_RESTORANT', isCheckbox: 'false' },
-    { caption: 'Янак Андроид ПРО', value: 0, DataType: '1', name: 'ALLOW_ANDROID_RAZNOS', isCheckbox: 'true' },
-    { caption: 'Цена за Янак Андроид ПРО', value: '40.00', DataType: '2', name: 'PRICE_ANDROID_RAZNOS', isCheckbox: 'false' },
-    { caption: 'Етикет', value: 1, DataType: '1', name: 'NR_ALLOW_ETIKET', isCheckbox: 'true' },
-    { caption: 'Цена за Етикет', value: '15.00', DataType: '2', name: 'nr_price_etiket', isCheckbox: 'false' },
-    { caption: 'Счетоводство', value: 0, DataType: '1', name: 'NR_ALLOW_ACCOUNTANT', isCheckbox: 'true' },
-    { caption: 'Цена за счетоводство', value: '80.00', DataType: '2', name: 'nr_price_account', isCheckbox: 'false' },
-    { caption: 'Кухненски терминал', value: 0, DataType: '1', name: 'ALLOW_MONITOR', isCheckbox: 'true' },
-    { caption: 'Цена за Кухненски терминал', value: '18.00', DataType: '2', name: 'PRICE_MONITOR', isCheckbox: 'false' },
-    { caption: 'Пос терминал', value: 0, DataType: '1', name: 'ALLOW_POSTERMINAL', isCheckbox: 'true' },
-    { caption: 'Цена за Пос терминал', value: '3.00', DataType: '2', name: 'PRICE_POSTERMINAL', isCheckbox: 'false' },
-    { caption: 'Забранява изпращане на данни по трансфера', value: 0, DataType: '1', name: 'ALLOW_FORBIDDEN_SEND_TRANSFER', isCheckbox: 'true' },
-  ]);
-
-
 
   editDataArray: EditDataInfo[] = [];
 
@@ -130,19 +143,181 @@ export class EditDataDialogComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.items == undefined) {
-      this.items = this.data;
+      this.items = data;
     }
 
     if (this.items != undefined) {
-      let parsedOject = JSON.parse(this.items);
-      console.log(parsedOject);
+      let parsedObject: DataType[] = JSON.parse(this.items);
+      // console.log(parsedObject);
+
+
+      for (let i = 0; i < parsedObject.length; i++) {
+        let objectSetting: DataType = parsedObject[i];
+        // console.log(objectSetting);
+
+        this.editDataArray.push({ caption: objectSetting.value, field_name: objectSetting.name, data_type: objectSetting.DataType });
+
+        let nameSetting = objectSetting.name;
+
+        switch (nameSetting) {
+          case 'SELL_STATION':
+            this.settings.sellStation = {
+              ...this.settings.sellStation,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'ALLOW_FORBIDDEN_SEND_TRANSFER':
+            this.settings.noSendTransfer = {
+              ...this.settings.noSendTransfer,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'ALLOW_STORE':
+            this.settings.store = {
+              ...this.settings.store,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'nr_price_pc':
+            this.settings.store = {
+              ...this.settings.store,
+              caption: objectSetting.value,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+            }
+            break;
+          case 'NR_ALLOW_TRSERVER':
+            this.settings.transfer = {
+              ...this.settings.transfer,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'nr_price_transfer':
+            this.settings.transfer = {
+              ...this.settings.transfer,
+              caption: objectSetting.value,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+            }
+            break;
+          case 'NR_ALLOW_HOTEL':
+            this.settings.hotel = {
+              ...this.settings.hotel,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'nr_price_hotel':
+            this.settings.hotel = {
+              ...this.settings.hotel,
+              caption: objectSetting.value,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+            }
+            break;
+          case 'ALLOW_ANDROID_RESTORANT':
+            this.settings.androidLite = {
+              ...this.settings.androidLite,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'PRICE_ANDROID_RESTORANT':
+            this.settings.androidLite = {
+              ...this.settings.androidLite,
+              caption: objectSetting.value,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+            }
+            break;
+          case 'ALLOW_ANDROID_RAZNOS':
+            this.settings.androidPro = {
+              ...this.settings.androidPro,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'PRICE_ANDROID_RAZNOS':
+            this.settings.androidPro = {
+              ...this.settings.androidPro,
+              caption: objectSetting.value,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+            }
+            break;
+          case 'NR_ALLOW_ETIKET':
+            this.settings.label = {
+              ...this.settings.label,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'nr_price_etiket':
+            this.settings.label = {
+              ...this.settings.label,
+              caption: objectSetting.value,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+            }
+            break;
+          case 'NR_ALLOW_ACCOUNTANT':
+            this.settings.accountant = {
+              ...this.settings.accountant,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'nr_price_account':
+            this.settings.accountant = {
+              ...this.settings.accountant,
+              caption: objectSetting.value,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+            }
+            break;
+          case 'ALLOW_MONITOR':
+            this.settings.kitchenMonitor = {
+              ...this.settings.kitchenMonitor,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'PRICE_MONITOR':
+            this.settings.kitchenMonitor = {
+              ...this.settings.kitchenMonitor,
+              caption: objectSetting.value,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+            }
+            break;
+          case 'ALLOW_POSTERMINAL':
+            this.settings.posTerminal = {
+              ...this.settings.posTerminal,
+              isCheck: objectSetting.value,
+            }
+            break;
+          case 'PRICE_POSTERMINAL':
+            this.settings.posTerminal = {
+              ...this.settings.posTerminal,
+              caption: objectSetting.value,
+              field_name: objectSetting.name,
+              data_type: objectSetting.DataType,
+            }
+            break;
+        }
+      }
     }
+
+    console.log(this.settings);
+    console.log(this.editDataArray);
   }
 
-  submittInfo() {
+  setCurrentSettingsValue(name: string, value: string | number): void {
+
+  }
+
+  submittInfo(): void {
     this.buttonClicked.emit();
   }
-  closeDialog() {
+  closeDialog(): void {
     this.buttonClickedClose.emit(true);
   }
 }
