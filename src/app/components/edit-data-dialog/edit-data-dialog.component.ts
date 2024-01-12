@@ -75,6 +75,7 @@ export interface EditDataInfoRender {
   data_type: string;
   isCheck: number | string;
   name: string;
+  nameCheckbox: string;
 }
 
 export interface DialogData {
@@ -134,17 +135,17 @@ function Autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
 })
 export class EditDataDialogComponent implements OnInit {
   public settings: EditDataSettings = {
-    sellStation: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    store: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    transfer: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    hotel: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    androidLite: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    androidPro: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    label: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    accountant: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    kitchenMonitor: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    posTerminal: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
-    noSendTransfer: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '' },
+    sellStation: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    store: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    transfer: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    hotel: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    androidLite: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    androidPro: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    label: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    accountant: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    kitchenMonitor: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    posTerminal: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
+    noSendTransfer: { caption: '', field_name: '', data_type: '', isCheck: 0, name: '', nameCheckbox: '' },
   }
 
   editDataArray: EditDataInfo[] = [];
@@ -350,7 +351,6 @@ export class EditDataDialogComponent implements OnInit {
   setCheckbox(e: MatCheckboxChange, name: string) {
     console.log(e.checked);
     console.log(name);
-    console.log(this.editDataArray);
 
     let value = 0;
     if (e.checked) value = 1;
@@ -360,6 +360,7 @@ export class EditDataDialogComponent implements OnInit {
 
     this.editDataArray[index] = { ...this.editDataArray[index], caption: value };
 
+    console.log(this.editDataArray);
   }
 
   submittInfo(): void {
