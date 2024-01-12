@@ -112,6 +112,21 @@ const data = JSON.stringify([
   { caption: 'Забранява изпращане на данни по трансфера', value: 0, DataType: '1', name: 'ALLOW_FORBIDDEN_SEND_TRANSFER', isCheckbox: 'true' },
 ]);
 
+function Autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
+  const originalMethod = descriptor.value;
+  const newDescriptor: PropertyDescriptor = {
+    configurable: true,
+    enumerable: false,
+
+    get() {
+      const boundFn = originalMethod.bind(this);
+      return boundFn;
+    }
+  };
+
+  return newDescriptor;
+}
+
 @Component({
   selector: 'app-edit-data-dialog',
   templateUrl: './edit-data-dialog.component.html',
@@ -323,6 +338,7 @@ export class EditDataDialogComponent implements OnInit {
     console.log(this.editDataArray);
   }
 
+  @Autobind
   setCurrentSettingValue(name: string, value: string | number, isCheck: string | number): void {
     console.log('Set Value');
     console.log('Name:', name);
@@ -330,9 +346,20 @@ export class EditDataDialogComponent implements OnInit {
     console.log('Is Check:', isCheck);
   }
 
+  @Autobind
   setCheckbox(e: MatCheckboxChange, name: string) {
     console.log(e.checked);
     console.log(name);
+    console.log(this.editDataArray);
+
+    let value = 0;
+    if (e.checked) value = 1;
+
+    const index = this.editDataArray.findIndex(x => x.field_name == name);
+    console.log('Index: ', index);
+
+    this.editDataArray[index] = { ...this.editDataArray[index], caption: value };
+
   }
 
   submittInfo(): void {

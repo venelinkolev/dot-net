@@ -4,10 +4,12 @@
 <div mat-dialog-content class="dialog">
     <div class="dialog-content">
         <div class="dialog-content__checkboxes">
-            <mat-checkbox [checked]="settings.sellStation.isCheck == 1" class="checkbox">
+            <mat-checkbox [checked]="settings.sellStation.isCheck == 1"
+                (change)="setCheckbox($event, settings.sellStation.field_name)" class="checkbox">
                 <p>{{settings.sellStation.name}}</p>
             </mat-checkbox>
-            <mat-checkbox [checked]="settings.noSendTransfer.isCheck == 1" class="checkbox">
+            <mat-checkbox [checked]="settings.noSendTransfer.isCheck == 1" class="checkbox"
+                (change)="setCheckbox($event, settings.noSendTransfer.field_name)">
                 <p>{{settings.noSendTransfer.name}}</p>
             </mat-checkbox>
         </div>
@@ -15,16 +17,24 @@
             <div class="dialog-content__left">
                 <app-input-field [settingsInfo]="settings.store" [setCurrentSettingValue]="setCurrentSettingValue"
                     [setCheckbox]="setCheckbox"></app-input-field>
-                <app-input-field [settingsInfo]="settings.transfer"></app-input-field>
-                <app-input-field [settingsInfo]="settings.hotel"></app-input-field>
-                <app-input-field [settingsInfo]="settings.label"></app-input-field>
-                <app-input-field [settingsInfo]="settings.kitchenMonitor"></app-input-field>
+                <app-input-field [settingsInfo]="settings.transfer" [setCurrentSettingValue]="setCurrentSettingValue"
+                    [setCheckbox]="setCheckbox"></app-input-field>
+                <app-input-field [settingsInfo]="settings.hotel" [setCurrentSettingValue]="setCurrentSettingValue"
+                    [setCheckbox]="setCheckbox"></app-input-field>
+                <app-input-field [settingsInfo]="settings.label" [setCurrentSettingValue]="setCurrentSettingValue"
+                    [setCheckbox]="setCheckbox"></app-input-field>
+                <app-input-field [settingsInfo]="settings.kitchenMonitor"
+                    [setCurrentSettingValue]="setCurrentSettingValue" [setCheckbox]="setCheckbox"></app-input-field>
             </div>
             <div class="dialog-content__right">
-                <app-input-field [settingsInfo]="settings.androidLite"></app-input-field>
-                <app-input-field [settingsInfo]="settings.androidPro"></app-input-field>
-                <app-input-field [settingsInfo]="settings.accountant"></app-input-field>
-                <app-input-field [settingsInfo]="settings.posTerminal"></app-input-field>
+                <app-input-field [settingsInfo]="settings.androidLite" [setCurrentSettingValue]="setCurrentSettingValue"
+                    [setCheckbox]="setCheckbox"></app-input-field>
+                <app-input-field [settingsInfo]="settings.androidPro" [setCurrentSettingValue]="setCurrentSettingValue"
+                    [setCheckbox]="setCheckbox"></app-input-field>
+                <app-input-field [settingsInfo]="settings.accountant" [setCurrentSettingValue]="setCurrentSettingValue"
+                    [setCheckbox]="setCheckbox"></app-input-field>
+                <app-input-field [settingsInfo]="settings.posTerminal" [setCurrentSettingValue]="setCurrentSettingValue"
+                    [setCheckbox]="setCheckbox"></app-input-field>
             </div>
         </div>
     </div>
