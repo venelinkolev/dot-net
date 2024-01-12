@@ -322,7 +322,7 @@ export class EditDataDialogComponent implements OnInit {
     console.log(this.editDataArray);
   }
 
-  setCurrentSettingsValue(name: string, value: string | number): void {
+  setCurrentSettingsValue(name: string, value: string | number, isCheck: boolean): void {
 
   }
 

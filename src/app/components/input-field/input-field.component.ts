@@ -9,4 +9,5 @@ export class InputFieldComponent {
 
   @Input() fieldName!: string;
   @Input() value!: number | string;
+  @Input() isCheck!: number | string;
 }
