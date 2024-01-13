@@ -31,9 +31,9 @@ body {
 }
 
 .dialogPanel {
-    width: 60vw;
+    width: 70vw;
 
-    .mat-mdc-dialog-content {
+    /* .mat-mdc-dialog-content {
         max-height: 75vh;
-    }
+    } */
 }

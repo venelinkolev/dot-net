@@ -64,3 +64,20 @@
     justify-content: space-around;
     padding: 1em;
 }
+
+@media (width < 1024px) {
+    .dialog-content__main {
+        flex-direction: column;
+        gap: 0;
+        align-items: stretch;
+    }
+
+    .dialog-content__left,
+    .dialog-content__right {
+        margin: 0;
+    }
+
+    .dialog-content__checkboxes {
+        flex-direction: column;
+    }
+}

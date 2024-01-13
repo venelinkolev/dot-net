@@ -35,7 +35,8 @@ export class OpenDialogComponent {
       //   { caption: 'Цена за Пос терминал', value: '3.00', DataType: '2', name: 'PRICE_POSTERMINAL', isCheckbox: 'false' },
       //   { caption: 'Забранява изпращане на данни по трансфера', value: 0, DataType: '1', name: 'ALLOW_FORBIDDEN_SEND_TRANSFER', isCheckbox: 'true' },
       // ],
-      width: '50vw',
+      panelClass: 'dialogPanel',
+      // width: '70vw',
       // height: '80vh',
     });
   }
