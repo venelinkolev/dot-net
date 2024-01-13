@@ -1,4 +1,5 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { formatNumber } from '@angular/common';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { EditDataInfoRender } from '../edit-data-dialog/edit-data-dialog.component';
 
@@ -7,14 +8,20 @@ import { EditDataInfoRender } from '../edit-data-dialog/edit-data-dialog.compone
   templateUrl: './input-field.component.html',
   styleUrls: ['./input-field.component.css']
 })
-export class InputFieldComponent {
+export class InputFieldComponent implements OnInit {
   @Input() settingsInfo!: EditDataInfoRender;
 
-  @Input() setCurrentSettingValue!: (name: string, value: string | number, isCheck: string | number) => void;
+  @Input() setCurrentSettingValue!: (name: string, value: string | number) => void;
   @Input() setCheckbox!: (e: MatCheckboxChange, name: string) => void;
   // @ViewChild('checkbox') checkbox!: HTMLElement;
 
+  // numberValue!: string
   constructor() {
+  }
+
+  ngOnInit(): void {
+    // this.numberValue = formatNumber(Number(this.settingsInfo.caption), 'bg-BG', '2.1-2');
+
   }
 
   // setCheckbox(e: MatCheckboxChange) {

@@ -19,6 +19,7 @@ import { EditDataDialogComponent } from './components/edit-data-dialog/edit-data
 import { OpenDialogComponent } from './components/open-dialog/open-dialog.component';
 import { InputFieldComponent } from './components/input-field/input-field.component';
 import { DialogLoaderComponent } from './components/dialog-loader/dialog-loader.component';
+import { NumberFormatDirective } from './unit/number-format.directive';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DialogLoaderComponent } from './components/dialog-loader/dialog-loader.
     OpenDialogComponent,
     InputFieldComponent,
     DialogLoaderComponent,
+    NumberFormatDirective,
   ],
   imports: [
     BrowserModule,

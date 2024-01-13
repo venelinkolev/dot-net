@@ -200,6 +200,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.store = {
               ...this.settings.store,
               isCheck: objectSetting.value,
+              nameCheckbox: objectSetting.name,
             }
             break;
           case 'nr_price_pc':
@@ -215,6 +216,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.transfer = {
               ...this.settings.transfer,
               isCheck: objectSetting.value,
+              nameCheckbox: objectSetting.name,
             }
             break;
           case 'nr_price_transfer':
@@ -230,6 +232,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.hotel = {
               ...this.settings.hotel,
               isCheck: objectSetting.value,
+              nameCheckbox: objectSetting.name,
             }
             break;
           case 'nr_price_hotel':
@@ -245,6 +248,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.androidLite = {
               ...this.settings.androidLite,
               isCheck: objectSetting.value,
+              nameCheckbox: objectSetting.name,
             }
             break;
           case 'PRICE_ANDROID_RESTORANT':
@@ -260,6 +264,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.androidPro = {
               ...this.settings.androidPro,
               isCheck: objectSetting.value,
+              nameCheckbox: objectSetting.name,
             }
             break;
           case 'PRICE_ANDROID_RAZNOS':
@@ -275,6 +280,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.label = {
               ...this.settings.label,
               isCheck: objectSetting.value,
+              nameCheckbox: objectSetting.name,
             }
             break;
           case 'nr_price_etiket':
@@ -290,6 +296,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.accountant = {
               ...this.settings.accountant,
               isCheck: objectSetting.value,
+              nameCheckbox: objectSetting.name,
             }
             break;
           case 'nr_price_account':
@@ -305,6 +312,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.kitchenMonitor = {
               ...this.settings.kitchenMonitor,
               isCheck: objectSetting.value,
+              nameCheckbox: objectSetting.name,
             }
             break;
           case 'PRICE_MONITOR':
@@ -320,6 +328,7 @@ export class EditDataDialogComponent implements OnInit {
             this.settings.posTerminal = {
               ...this.settings.posTerminal,
               isCheck: objectSetting.value,
+              nameCheckbox: objectSetting.name,
             }
             break;
           case 'PRICE_POSTERMINAL':
@@ -340,11 +349,18 @@ export class EditDataDialogComponent implements OnInit {
   }
 
   @Autobind
-  setCurrentSettingValue(name: string, value: string | number, isCheck: string | number): void {
+  setCurrentSettingValue(name: string, value: string | number): void {
     console.log('Set Value');
     console.log('Name:', name);
     console.log('Value:', value);
-    console.log('Is Check:', isCheck);
+
+    const index = this.editDataArray.findIndex(x => x.field_name == name);
+    console.log('Index: ', index);
+
+    this.editDataArray[index] = {
+      ...this.editDataArray[index],
+      caption: Number(value).toFixed(2).toString(),
+    }
   }
 
   @Autobind
