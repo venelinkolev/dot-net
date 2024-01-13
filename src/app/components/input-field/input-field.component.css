@@ -12,12 +12,6 @@
     font-weight: 500;
 }
 
-/* label {
-    color: black;
-    font-weight: 500;
-    margin-left: 0.5em;
-} */
-
 ::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input {
     font-size: 24px;
 }

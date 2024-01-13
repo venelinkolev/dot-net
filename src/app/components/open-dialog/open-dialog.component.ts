@@ -36,8 +36,6 @@ export class OpenDialogComponent {
       //   { caption: 'Забранява изпращане на данни по трансфера', value: 0, DataType: '1', name: 'ALLOW_FORBIDDEN_SEND_TRANSFER', isCheckbox: 'true' },
       // ],
       panelClass: 'dialogPanel',
-      // width: '70vw',
-      // height: '80vh',
     });
   }
 }
