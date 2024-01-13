@@ -27,21 +27,21 @@ export class DialogLoaderComponent implements OnInit {
         console.log(this.data);
         console.log(this.dialog_title);
 
-        // if (this.dialog_title == "edit-data-dialog") {
-        //     const d = this.dialog.open<EditDataDialogComponent, DialogData>(EditDataDialogComponent, {
-        //         data: {
-        //             data: this.data
-        //         },
-        //         panelClass: "dialogPanel"
-        //     });
+        if (this.dialog_title == "edit-data-dialog") {
+            const d = this.dialog.open<EditDataDialogComponent, DialogData>(EditDataDialogComponent, {
+                data: {
+                    data: this.data
+                },
+                panelClass: "dialogPanel"
+            });
 
-        //     d.componentInstance.buttonClicked.pipe(tap(info => {
-        //         this.submittInfo(info, d);
-        //     })).subscribe();
-        //     d.componentInstance.buttonClickedClose.pipe(tap(bool => {
-        //         this.closeDialog(bool, d);
-        //     })).subscribe();
-        // }
+            d.componentInstance.buttonClicked.pipe(tap(info => {
+                this.submittInfo(info, d);
+            })).subscribe();
+            d.componentInstance.buttonClickedClose.pipe(tap(bool => {
+                this.closeDialog(bool, d);
+            })).subscribe();
+        }
     }
 
     submittInfo(info: EditDataInfo[], d: any) {

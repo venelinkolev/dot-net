@@ -47,7 +47,10 @@ import { NumberFormatDirective } from './unit/number-format.directive';
 })
 export class AppModule {
   constructor(private injector: Injector) {
-    const customElement = createCustomElement(EditDataDialogComponent, { injector });
-    customElements.define('app-edit-data-dialog', customElement);
+    // const customElement = createCustomElement(EditDataDialogComponent, { injector });
+    // customElements.define('app-edit-data-dialog', customElement);
+
+    const dialogLoader = createCustomElement(DialogLoaderComponent, { injector });
+    customElements.define('app-dialog-loader', dialogLoader);
   }
 }

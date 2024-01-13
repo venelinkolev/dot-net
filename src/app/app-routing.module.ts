@@ -6,22 +6,32 @@ import { DialogLoaderComponent } from './components/dialog-loader/dialog-loader.
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/edit',
+    path: '', redirectTo: 'load_dialog', pathMatch: 'full'
   },
   {
     path: 'edit',
     component: EditDataDialogComponent,
-  },
-  {
-    path: 'open',
-    component: OpenDialogComponent,
-  },
-  {
-    path: 'load-dialog',
-    component: DialogLoaderComponent,
+  }, {
+    path: 'load_dialog', component: DialogLoaderComponent
   }
+
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   redirectTo: '/edit',
+  // },
+  // {
+  //   path: 'edit',
+  //   component: EditDataDialogComponent,
+  // },
+  // {
+  //   path: 'open',
+  //   component: OpenDialogComponent,
+  // },
+  // {
+  //   path: 'load-dialog',
+  //   component: DialogLoaderComponent,
+  // }
 ];
 
 @NgModule({
